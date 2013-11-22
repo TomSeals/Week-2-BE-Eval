@@ -1,11 +1,11 @@
 module Tennis
   class Game
-    attr_accessor :player1, :player2
+    attr_accessor :player1, :player2, :opponent
 
     def initialize
       @player1 = Player.new
       @player2 = Player.new
-
+     
       @player1.opponent = @player2
       @player2.opponent = @player1
     end
@@ -16,6 +16,8 @@ module Tennis
     #
     # Returns the score of the winning player. 
     def wins_ball(winner)
+      @points = points
+      points +=1
       # TODO: Think it's gross to pass an integer instead of a player object?
       # Then reimplement this method!
     end
@@ -36,8 +38,9 @@ module Tennis
     end
 
     # Returns the String score for the player.
-    def score
+    def score 
       return 'love' if @points == 0
+    else return @points += 1
     end
   end
 end
