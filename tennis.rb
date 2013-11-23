@@ -16,8 +16,11 @@ module Tennis
     #
     # Returns the score of the winning player. 
     def wins_ball(winner)
-      @points = points
-      points +=1
+      if (winner == 1)
+        @player1.record_won_ball;
+      else
+        @player2.record_won_ball;
+      end
       # TODO: Think it's gross to pass an integer instead of a player object?
       # Then reimplement this method!
     end

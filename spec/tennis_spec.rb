@@ -21,7 +21,6 @@ describe Tennis::Game do
   describe '#wins_ball' do
     it 'increments the points of the winning player' do
       game.wins_ball(1)
-
       expect(game.player1.points).to eq(1)
     end
   end
@@ -44,11 +43,11 @@ describe Tennis::Player do
   describe '#record_won_ball!' do
     it 'increments the points' do
       player.record_won_ball!
-
       expect(player.points).to eq(1)
     end
   end
 
+  #tests the instance method to reveal a player's score
   describe '#score' do
     context 'when points is 0' do
       it 'returns love' do
@@ -59,17 +58,22 @@ describe Tennis::Player do
     context 'when points is 1' do
       it 'returns fifteen' do
         player.points = 1
-
         expect(player.score).to eq('fifteen')
       end 
     end
     
     context 'when points is 2' do
-      it 'returns thirty'  
+      it 'returns thirty' do
+        player.points = 2
+        expect(player.score).to eq('thirty')
+      end
     end
     
     context 'when points is 3' do
-      it 'returns forty' 
+      it 'returns forty' do
+        player.points = 2
+        expect(player.score).to eq('thirty')
+      end
     end
   end
 end
