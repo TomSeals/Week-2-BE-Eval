@@ -37,8 +37,8 @@ module Tennis
         return 'DUECE' if @player1.points > 3
       # cases before DUECE when players have unequal points
       elsif (@player1.points <= 3 && @player2.points <= 3)
-        p1_score = @p1_score
-        p2_score = @p2_score
+        p1_score = @player1.score
+        p2_score = @player2.score
         return ('player1: '+ p1_score.to_s + ', player2: ' + p2_score.to_s)
       # cases for DUECE when player has advantage
       elsif (@player1.points - @player2.points == 1)
@@ -51,7 +51,7 @@ module Tennis
           return 'player1 wins the game!'
       else
         @player2.games += 1
-        return 'player2 wins the game!'
+          return 'player2 wins the game!'
       end
     end 
   end

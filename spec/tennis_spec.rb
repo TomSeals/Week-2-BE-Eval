@@ -58,26 +58,35 @@ describe Tennis::Game do
     end
   
     context 'player1 has the advantage' do
-      it 'returns AD player1' do
-        expect(game.score).to eq('AD player1')
+      it 'returns Advantage player1' do
+        game.wins_ball(1,4)
+        game.wins_ball(2,4)
+        game.wins_ball(1)
+        expect(game.score).to eq('Advantage player1')
       end 
     end
 
     context 'player2 has the advantage' do
-      it 'returns AD player2' do
-        expect(game.score).to eq('AD player2')
+      it 'returns Advantage player2' do
+        game.wins_ball(1,4)
+        game.wins_ball(2,5)
+        expect(game.score).to eq('Advantage player2')
       end 
     end
 
     context 'unequal scores before duece' do
       it 'returns the score of player1 and player2' do
-        expect(game.score).to eq('player1: fifteen, player2: thirty')
+        game.wins_ball(1,2)
+        game.wins_ball(2,3)
+        expect(game.score).to eq('player1: thirty, player2: forty')
       end
     end
 
     context 'somebody wins a game!' do
       it 'returns a win with the winner' do
-        expect(game.score).to eq('player2 wins the game!')
+        game.wins_ball(1,4)
+        game.wins_ball(2,2)
+        expect(game.score).to eq('player1 wins the game!')
       end
     end
   end
