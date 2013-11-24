@@ -18,14 +18,19 @@ module Tennis
     # Returns the score of the winning player. 
 
     # increments the points of the winning player
+
     def wins_ball(winner)
       if (winner == 1)
         @player1.points += 1;
       else
-         @player2.points += 1;
+        @player2.points += 1;
       end
     end
+
+    def score
+    end 
   end
+
 
   class Player
     attr_accessor :points, :games, :sets, :opponent
