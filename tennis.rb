@@ -19,15 +19,40 @@ module Tennis
 
     # increments the points of the winning player
 
-    def wins_ball(winner)
+    def wins_ball(winner, balls = 1)
       if (winner == 1)
-        @player1.points += 1;
+        @player1.points += balls
       else
-        @player2.points += 1;
+        @player2.points += balls
       end
     end
 
     def score
+      # cases where both players have an equal amount of points
+      if @player1.points == @player2.points
+        return 'love all' if @player1.points == 0
+        return 'fifteen all' if @player1.points == 1
+        return 'thirty all' if @player1.points == 2
+        return 'forty all' if @player1.points == 3
+        return 'DUECE' if @player1.points > 3
+      # cases before DUECE when players have unequal points
+      elsif (@player1.points <= 3 && @player2.points <= 3)
+        p1_score = @p1_score
+        p2_score = @p2_score
+        return ('player1: '+ p1_score.to_s + ', player2: ' + p2_score.to_s)
+      # cases for DUECE when player has advantage
+      elsif (@player1.points - @player2.points == 1)
+        return 'Advantage player1'
+      elsif (@player1.points - @player2.points == -1)
+        return 'Advantage player2'
+      # cases for a game won
+      elsif (@player1.points - @player2.points > 1)
+        @player1.games += 1
+          return 'player1 wins the game!'
+      else
+        @player2.games += 1
+        return 'player2 wins the game!'
+      end
     end 
   end
 
@@ -35,16 +60,14 @@ module Tennis
   class Player
     attr_accessor :points, :games, :sets, :opponent
 
-    def initialize
+    def initialize(opponent: nil)
       @points = 0
       @games = 0
       @sets = 0
       @opponent = opponent
     end
 
-    # Increments the score by 1.
-    #
-    # Returns the integer new score.
+    # Increments the score by 1. Returns the integer new score.
     def record_won_ball!
       @points += 1
     end

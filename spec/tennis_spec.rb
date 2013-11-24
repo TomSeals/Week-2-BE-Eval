@@ -33,18 +33,26 @@ describe Tennis::Game do
       end 
 
       it 'returns fifteen all' do
+        game.wins_ball(1)
+        game.wins_ball(2)
         expect(game.score).to eq('fifteen all')
       end 
 
       it 'returns thirty all' do
+        game.wins_ball(1,2)
+        game.wins_ball(2,2)
         expect(game.score).to eq('thirty all')
       end 
 
       it 'returns forty all' do
+        game.wins_ball(1,3) 
+        game.wins_ball(2,3)
         expect(game.score).to eq('forty all')
       end
 
       it 'returns DUECE' do
+        game.wins_ball(1,4) 
+        game.wins_ball(2,4)
         expect(game.score).to eq('DUECE')
       end
     end
