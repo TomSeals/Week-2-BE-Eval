@@ -11,14 +11,6 @@ module Tennis
       @player2.opponent = @player1
     end
 
-    # Records a win for a ball in a game.
-    #
-    # winner - The Integer (1 or 2) representing the winning player.
-    #
-    # Returns the score of the winning player. 
-
-    # increments the points of the winning player
-
     def wins_ball(winner, balls = 1)
       if (winner == 1)
         @player1.points += balls
@@ -55,7 +47,6 @@ module Tennis
       end
     end 
   end
-
 
   class Player
     attr_accessor :points, :games, :sets, :opponent

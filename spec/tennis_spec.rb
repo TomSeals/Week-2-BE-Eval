@@ -92,8 +92,6 @@ describe Tennis::Game do
   end
 end
 
-
-
 describe Tennis::Player do
   let(:player) do
     player = Tennis::Player.new
